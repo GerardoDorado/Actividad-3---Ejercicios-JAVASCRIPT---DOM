@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <style>
+        .collapsible {
+            background-color: darkred;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: center;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: white;
+        }
+
+    </style>
+
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <h2>Presione sobre alguna de las siguientes opciones: </h2>
+
+    <button class="collapsible">Obtener CURP</button>
+    <div class="content">
+        <form method="post">
+            <fieldset>
+                <legend>Informacion personal:</legend>
+                <form method="POST" action="">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br />
+                    <input type="text" name="ap1" id="ap1" placeholder="Primer apellido"><br />
+                    <input type="text" name="ap2" id="ap2" placeholder="Segundo apellido"><br />
+                    <input type="text" name="fecha" id="fecha" placeholder="dd/m/aaaa"><br />
+                    <input type="text" name="estado" id="estado" placeholder="Estado de nacimiento"><br />
+                    <input type="radio" name="radio" id="hombre"><label for="hombre">Masculino </label>
+                    <input type="radio" name="radio" id="mujer"><label for="mujer">Femenino </label><br />
+
+
+                    <input type="button" name="calcular" value="Calcular" onclick="CURP();">
+                    <input type="reset" name="restablecer" value="restablecer"><br /><br />
+
+                    <label>Su CURP es la siguiente: </label><label id="res"></label>
+                </form>
+            </fieldset>
+        </form>
+
+    </div>
+
+    <button class="collapsible">Cadenas</button>
+    <div class="content">
+        <fieldset>
+            <legend>Manejo de cadenas: </legend>
+            <input type="text" name="txtCadena" id="txtCadena" placeholder="Ingrese alguna cadena: " onkeypress="cal();"><br>
+
+            <label>Cantidad de vocales: </label><label id="numVoc"></label><br />
+            <label>Cantidad de consonantes: </label><label id="numCon"></label><br />
+            <label>Cadena loca: </label><label id="cadLoca"></label><br /><br>
+        </fieldset>
+    </div>
+
+    <button class="collapsible">Convertir números</button>
+    <div class="content">
+        <fieldset>
+            <legend>Conversión de números a Binario, Octal y Hexadecimal</legend>
+
+            <label>Ingrese cualquier número: </label><input type="text" name="num" id="num"><br />
+            <input type="radio" name="uni" id="uni1" onclick="calcular();"><label for="uni1">Binario</label><br>
+            <input type="radio" name="uni" id="uni2" onclick="calcular();"><label for="uni2">Octal</label><br>
+            <input type="radio" name="uni" id="uni3" onclick="calcular();"><label for="uni3">Hexadecimal</label><br>
+            <label>La conversión es la siguiente: </label><label id="resultado"></label>
+
+        </fieldset>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
